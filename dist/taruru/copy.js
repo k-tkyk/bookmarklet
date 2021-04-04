@@ -70,10 +70,12 @@
                 e[7].partRecipe.key, //Rタイヤ
                 //e[].partRecipe.key,
             ];
-            navigator.clipboard.writeText(r.join(", "));
-            return $nuxt.$nextTick();
+            return navigator.clipboard.writeText(r.join(", "));
         })
         .then(function(){
             alert("コピー完了");
+        })
+        .catch(function(e){
+            alert("コピー失敗:\n" + e);
         });
 })();
