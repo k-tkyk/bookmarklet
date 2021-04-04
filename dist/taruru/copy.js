@@ -70,7 +70,9 @@
                 e[7].partRecipe.key, //Rタイヤ
                 //e[].partRecipe.key,
             ];
-            return navigator.clipboard.writeText(r.join(", "));
+            return navigator.clipboard.writeText(
+                "=SPLIT(\"" + r.join(", ") + "\", \",\", FALSE)"
+            );
         })
         .then(function(){
             alert("コピー完了");
