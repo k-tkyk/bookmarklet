@@ -14,7 +14,10 @@
             return $nuxt.$nextTick();
         })
         .then(function(){
-            var e = t[c][5].gAllEquips, s = t[c][5].scores, d = t[c][6].diag;
+            function partsName(e, c) {
+                return e.find(p => p.part === c).partRecipe.key;
+            }
+            var e = t[c][6].gAllEquips, s = t[c][6].scores, d = t[c][6].diag;
             console.log(e, d, s);
             var r = [
                 d["最高速度kmh"].toFixed(3),
@@ -57,18 +60,17 @@
                 s["タイヤ旋回"].toFixed(3),
                 s["タイヤ反発"].toFixed(3),
                 //s[""].toFixed(3),
-                e[0].partRecipe.key, //ボディ
-                e[37].partRecipe.key, //メイン特性
-                e[38].partRecipe.key, //アシスト特性1
-                e[39].partRecipe.key, //アシスト特性2
-                e[1].partRecipe.key, //モーター
-                e[2].partRecipe.key, //ギヤ
-                e[3].partRecipe.key, //シャーシ
-                e[4].partRecipe.key, //Fホイール
-                e[5].partRecipe.key, //Fタイヤ
-                e[6].partRecipe.key, //Rホイール
-                e[7].partRecipe.key, //Rタイヤ
-                //e[].partRecipe.key,
+                partsName(e, "ボディ"),
+                partsName(e, "ボディ特性"),
+                partsName(e, "ボディアシスト・１"),
+                partsName(e, "ボディアシスト・２"),
+                partsName(e, "モーター"),
+                partsName(e, "ギヤ"),
+                partsName(e, "シャーシ"),
+                partsName(e, "フロント・ホイール"),
+                partsName(e, "フロント・タイヤ"),
+                partsName(e, "リヤ・ホイール"),
+                partsName(e, "リヤ・タイヤ"),
             ];
             return navigator.clipboard.writeText(
                 "=SPLIT(\"" + r.join(", ") + "\", \",\", FALSE)"
