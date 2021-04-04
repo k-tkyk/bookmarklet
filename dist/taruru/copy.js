@@ -60,7 +60,7 @@
                 e[0].partRecipe.key, //ボディ
                 e[37].partRecipe.key, //メイン特性
                 e[38].partRecipe.key, //アシスト特性1
-                e[39].partRecipe.key, //アシスト特性
+                e[39].partRecipe.key, //アシスト特性2
                 e[1].partRecipe.key, //モーター
                 e[2].partRecipe.key, //ギヤ
                 e[3].partRecipe.key, //シャーシ
