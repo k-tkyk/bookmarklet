@@ -8,6 +8,7 @@
     // indexを調整するため詳細と診断の開き直し
     t.isDetailOpen = true;
     t.isDiagnosisOpen = false;
+    var result = "";
     $nuxt.$nextTick()
         .then(function(){
             t.isDiagnosisOpen = true;
@@ -72,14 +73,17 @@
                 partsName(e, "リヤ・ホイール"),
                 partsName(e, "リヤ・タイヤ"),
             ];
-            return navigator.clipboard.writeText(
-                "=SPLIT(\"" + r.join(", ") + "\", \",\", FALSE)"
-            );
+            result = "=SPLIT(\"" + r.join(", ") + "\", \",\", FALSE)";
+            return navigator.clipboard.writeText(result);
         })
         .then(function(){
             alert("コピー完了");
         })
         .catch(function(e){
-            alert("コピー失敗:\n" + e);
+            if (result) {
+                prompt("以下の文字列をコピーしてください", result);
+            } else {
+                alert("データ抽出失敗:\n" + e);
+            }
         });
 })();
